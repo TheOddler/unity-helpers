@@ -24,11 +24,13 @@ using System.Collections.Generic;
 [System.Serializable]
 public class SerializableDictionary<TKey,TValue> : Dictionary<TKey, TValue>, ISerializationCallbackReceiver
 {
+	// We save the keys and values in two lists because Unity does understand those.
 	[SerializeField]
 	private List<TKey> _keys;
 	[SerializeField]
 	private List<TValue> _values;
 	
+	// Before the serialization we fill these lists
 	public void OnBeforeSerialize()
 	{
 		_keys = new List<TKey>(this.Count);
@@ -40,6 +42,7 @@ public class SerializableDictionary<TKey,TValue> : Dictionary<TKey, TValue>, ISe
 		}
 	}
 	
+	// After the serialization we create the dictionary from the two lists
 	public void OnAfterDeserialize()
 	{
 		this.Clear();
