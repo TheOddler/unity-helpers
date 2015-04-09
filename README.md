@@ -32,6 +32,10 @@ This class contains only a single method (or at least now it does, might be more
 
 This method returns all assets of the given type, even when they aren't loaded into memory.
 
+## Further developer and suggestions
+
+I'll continue adding interesting code when I need it myself. I'm always interested in hearing improvements or suggestions. Just add an issue and I'll take a look at it. The same, of course, goes for bugs you find.
+
 # License
 
 You can use this code in any of your unity projects and modify it to your liking. However you can't sell it without permission, even if you modified it, unless it's in a unity build. I can't promise the code will work as you expect it to, nor that it won't damage stuff. Anything else, ask.
