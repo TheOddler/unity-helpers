@@ -5,6 +5,17 @@ using System.Collections.Generic;
 //
 // Unity doesn't know how to serialize a Dictionary
 // So this is a simple extension of a dictionary that saves as two lists.
+// By Pablo Bollansée
+
+//
+// Usage is a little strange though, for some reason you can't use it directly in unity.
+// You have to make a non-generic instance of it, and then use it. This is luckily quite easy:
+// 
+// [System.Serializable]
+// class MyDictionary : SerializableDictionary<KeyType, ValueType> {}
+//
+// Don't forget the 'System.Serializable' or it again won't serialize.
+
 [System.Serializable]
 public class SerializableDictionary<TKey,TValue> : Dictionary<TKey, TValue>, ISerializationCallbackReceiver
 {
