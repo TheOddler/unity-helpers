@@ -14,7 +14,12 @@ using System.Collections.Generic;
 // [System.Serializable]
 // class MyDictionary : SerializableDictionary<KeyType, ValueType> {}
 //
-// Don't forget the 'System.Serializable' or it again won't serialize.
+// Then make an instance of this like this:
+//
+// [SerializeField]
+// private MyDictionary _dictionary = new MyDictionary();
+//
+// Now you can use it in exactly the same way as a notmal Dictionary. Everything just works.
 
 [System.Serializable]
 public class SerializableDictionary<TKey,TValue> : Dictionary<TKey, TValue>, ISerializationCallbackReceiver
