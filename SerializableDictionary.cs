@@ -22,29 +22,27 @@ using System.Collections.Generic;
 // Now you can use it in exactly the same way as a notmal Dictionary. Everything just works.
 
 [System.Serializable]
-public class SerializableDictionary<TKey,TValue> : Dictionary<TKey, TValue>, ISerializationCallbackReceiver
-{
+public class SerializableDictionary<TKey,TValue> : 
+	Dictionary<TKey, TValue>, ISerializationCallbackReceiver {
+	
 	// We save the keys and values in two lists because Unity does understand those.
-	[SerializeField]
+	[SerializeField, HideInInspector]
 	private List<TKey> _keys;
-	[SerializeField]
+	[SerializeField, HideInInspector]
 	private List<TValue> _values;
 	
 	// Before the serialization we fill these lists
-	public void OnBeforeSerialize()
-	{
+	public void OnBeforeSerialize() {
 		_keys = new List<TKey>(this.Count);
 		_values = new List<TValue>(this.Count);
-		foreach(var kvp in this)
-		{
+		foreach(var kvp in this) {
 			_keys.Add(kvp.Key);
 			_values.Add(kvp.Value);
 		}
 	}
 	
 	// After the serialization we create the dictionary from the two lists
-	public void OnAfterDeserialize()
-	{
+	public void OnAfterDeserialize() {
 		this.Clear();
 		for (int i=0; i!= Mathf.Min(_keys.Count,_values.Count); i++) {
 			this.Add(_keys[i],_values[i]);
